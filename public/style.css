@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.score {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.photo-container {
+  width: 600px;
+  height: 400px;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+}
+
+.photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.inputs {
+  margin-top: 20px;
+}
+
+#map {
+  height: 400px;
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  border: 2px solid #ccc;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+  white-space: pre-line;
+}
