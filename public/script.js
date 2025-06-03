@@ -106,7 +106,7 @@ function showFinal(){
 
   // Show grade image
   const wrapper = document.querySelector('.photo-container');
-  wrapper.innerHTML = `<img src="/images/${grade}.jpg" alt="${grade}">`;
+  wrapper.innerHTML = `<img src="/images/${grade}.JPG" alt="${grade}">`;
 
   // Show final result
   result.innerHTML = `
