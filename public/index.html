@@ -2,55 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>TimeGuessr</title>
+  <title>EmmaGuessr</title>
+
+  <!-- Logo font -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <h1>TimeGuessr</h1>
-  <div id="score" class="score">Score: 0</div>
+  <h1 class="logo">EmmaGuessr</h1>
+  <div id="score" class="score">Score&nbsp;: 0</div>
 
-  <div class="photo-container">
-    <img id="photo" src="" alt="Photo">
+  <div class="main-wrapper">
+    <div class="photo-container">
+      <img id="photo" src="" alt="Photo">
+    </div>
+
+    <div class="side-col">
+      <h2>Guess the&nbsp;Date</h2>
+      Year <input type="range" id="year" min="2000" max="2025" value="2015" oninput="updateYearLabel(this.value)">
+      <span id="yearLabel">2015</span><br>
+      Month <input type="range" id="month" min="1" max="12" value="7" oninput="updateMonthLabel(this.value)">
+      <span id="monthLabel">7</span>
+
+      <h2>Guess&nbsp;the&nbsp;Location</h2>
+      <div id="mapWrapper" class="map-wrapper">
+        <div id="map"></div>
+        <button id="toggleMap" class="map-toggle">Expand Map</button>
+      </div>
+
+      <button id="submitBtn" onclick="checkGuess()">Submit&nbsp;Guess</button>
+      <div id="result"></div>
+    </div>
   </div>
-
-  <div class="inputs">
-    <h2>Guess the Date</h2>
-    <label for="year">Year:</label>
-    <input
-      type="range"
-      id="year"
-      min="2000"
-      max="2025"
-      value="2015"
-      oninput="updateYearLabel(this.value)"
-    >
-    <span id="yearLabel">2015</span>
-    <br>
-    <label for="month">Month:</label>
-    <input
-      type="range"
-      id="month"
-      min="1"
-      max="12"
-      value="7"
-      oninput="updateMonthLabel(this.value)"
-    >
-    <span id="monthLabel">7</span>
-  </div>
-
-  <h2>Click the Map to Guess the Photo’s Location</h2>
-  <div id="map"></div>
-
-  <br>
-  <button onclick="checkGuess()">Submit Guess</button>
-
-  <div id="result"></div>
 
   <script src="script.js"></script>
 </body>
 </html>
+

@@ -1,51 +1,79 @@
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 20px;
-  position: relative;
+/* EmmaGuessr ─ pastel baby-blue with violet accents */
+
+:root{
+  --bg:#cfe8ff;
+  --accent:#8d6bff;
+  --accent-light:#b7a8ff;
 }
 
-.score {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-weight: bold;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+/* Global */
+body{
+  background:var(--bg);
+  font-family:Arial, sans-serif;
+  margin:0;
+  padding:20px;
+}
+.logo{
+  font-family:'Anton',sans-serif;
+  color:var(--accent);
+  font-size:56px;margin:0 0 20px;
+}
+.score{
+  position:absolute;top:20px;right:20px;
+  background:var(--accent-light);color:#fff;
+  padding:8px 12px;border-radius:6px;font-weight:bold;
+  box-shadow:0 0 6px #0003;
+}
+h2{font-family:'Anton',sans-serif;color:var(--accent);margin:24px 0 12px;}
+
+/* main layout */
+.main-wrapper{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;}
+
+/* Photo container  – now auto-shrinks to actual image width */
+.photo-container{
+  display:inline-block;               /* <- shrink-wrap width */
+  border:3px solid var(--accent-light);
+  background:#fff6;
+  max-width:60vw;                     /* never exceed 60 % of viewport width */
+  max-height:70vh;                    /* nor 70 % viewport height */
+  margin-bottom:20px;
 }
 
-.photo-container {
-  width: 600px;
-  height: 400px;
-  margin: 0 auto 20px;
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background: #f9f9f9;
+.photo-container img{
+  display:block;                      /* kill inline whitespace */
+  width:auto;height:auto;
+  max-width:60vw;max-height:70vh;     /* safe caps */
+  object-fit:contain;
 }
 
-.photo-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
+/* Right column */
+.side-col{flex:0 1 340px;max-width:35vw;display:flex;flex-direction:column;align-items:center;}
 
-.inputs {
-  margin-top: 20px;
-}
+/* Sliders */
+input[type=range]{accent-color:var(--accent);}
+input[type=range]::-webkit-slider-thumb,
+input[type=range]::-moz-range-thumb{background:var(--accent);}
 
-#map {
-  height: 400px;
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto 20px;
-  border: 2px solid #ccc;
-}
+/* Map */
+.map-wrapper{width:100%;height:250px;position:relative;transition:height .3s;}
+.map-wrapper.expanded{height:400px;}
+#map{width:100%;height:100%;border:3px solid var(--accent-light);}
+.map-toggle{position:absolute;top:8px;right:8px;background:var(--accent);color:#fff;border:none;padding:4px 10px;border-radius:4px;font-size:.8rem;cursor:pointer;}
 
-#result {
-  margin-top: 20px;
-  font-weight: bold;
-  white-space: pre-line;
+/* Button */
+button:not(.map-toggle){
+  background:var(--accent);color:#fff;border:none;
+  padding:12px 28px;border-radius:8px;font-size:1rem;cursor:pointer;margin-top:16px;
+  box-shadow:0 4px 8px #0003;transition:filter .15s;
+}
+button:not(.map-toggle):hover{filter:brightness(1.1);}
+button:disabled{opacity:.4;cursor:not-allowed}
+
+/* Result text */
+#result{margin-top:16px;font-weight:bold;white-space:pre-line;}
+
+/* Responsive */
+@media(max-width:900px){
+  .main-wrapper{flex-direction:column;align-items:center;}
+  .photo-container,.side-col{max-width:90vw;}
 }
